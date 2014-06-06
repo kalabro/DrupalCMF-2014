@@ -1,0 +1,767 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Drupal out of the box: flexible, secure, stable | Drupal White Nights 2014</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/dwn/styles/screen.css">
+    <link href="shower/themes/dwn/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Drupal out of the box: flexible, secure, stable</h1>
+		<p>Kate Marshalkina, <a href="http://licel.ru">Licel</a></p>
+	</header>
+  <section class="slide cover" id="Start"><div>
+      <img src="pictures/boxes.jpg" alt="">
+		<footer>
+          <p>Specially for <a href="http://camp2014.drupalspb.org/en">Drupal White Nights 2014</a></p>
+		</footer>
+	</div></section>
+	<section class="slide cover" id="Cover"><div>
+        <div class="content">
+          <h2><strong>Drupal out of the box</strong><br> flexible, secure, stable</h2>
+          <p>Kate Marshalkina, <a href="http://licel.ru">Licel</a></p>
+          <img src="pictures/cover_cat.jpg" alt="Source: https://www.flickr.com/photos/cindyprins/10572913496/in/faves-kalabro/">
+        </div>
+		<style>
+			#Cover h2 {
+				margin:-100px -96px 0 -128px;
+				padding: 40px 0 10px 0;
+				color:#FFF;
+				text-align:center;
+				font-size:60px;
+				line-height: 120%;
+				background: rgba(255,255,255, 0.4);
+				}
+			#Cover h2 strong {
+				font-size: 70px;
+			}
+			#Cover .content p {
+				margin:10px -50px 0;
+				color:#FFF;
+				font-style:italic;
+				font-size:24px;
+				}
+				#Cover .content p a {
+					color:#FFF;
+					}
+		</style>
+	</div></section>
+	<section class="slide cover" id="elementary"><div>
+        <img src="pictures/joke.png" alt="">
+        <footer>
+			<p>Elementary, my dear Watson!</p>
+		</footer>
+	</div></section>
+  <section class="slide" id="aboutme"><div><div class="content">
+        <h2>About me</h2>
+        <ul>
+          <li>Kate Marshalkina, Web Developer at <a href="http://licel.ru/">Licel.ru</a>, Moscow</li>
+          <li><strong>@kalabro</strong> on <i class="fa fa-twitter"></i> and <i class="fa fa-drupal"></i></li>
+          <li class="many-links">Co-maintainer of <a href="https://drupal.org/project/path_breadcrumbs">Path Breadcrumbs</a>, <a href="https://drupal.org/project/ui_cache_clear">UI Cache Clear</a>, <a href="https://drupal.org/project/yandex_metrics">Yandex.Metrics</a>.</li>
+          <li>DrupalSPB
+            <ol>
+              <li>Speaker on local events</li>
+              <li><a href="http://drupalspb.org/user/61/publications">Writer</a></li>
+              <li>Coder on codesprints</li>
+              <li style="color:#ff0066">St. Petersburg lover</li>
+            </ol>
+          </li>
+        </ul>
+      </div></div>
+      <style>
+        #aboutme {
+
+        }
+
+        #aboutme .fa {
+          color: #52A2DF;
+          font-size: 130%;
+          padding: 0 5px;
+        }
+      </style>
+    </section>
+  <section class="slide cover" id="cms-7"><div>
+        <img src="pictures/drupal7_clean.png" alt="">
+        <footer>
+			<p>Drupal 7 after installation.</p>
+		</footer>
+	</div>
+  </section>
+  <section class="slide cover" id="cms-8"><div>
+        <img src="pictures/drupal8_clean.png" alt="">
+        <footer>
+			<p>Drupal 8 after installation.</p>
+		</footer>
+	</div>
+  </section>
+  <section class="slide" id="out-of-the-box"><div>
+      <h2>Framework? It's about code.</h2>
+        <blockquote>Framework — a reusable set of libraries or classes for a software system.</blockquote>
+
+        <h2 class="additional-header">Framework + UI = CMF</h2>
+      <table>
+        <tr>
+          <th>&nbsp;</th>
+          <th>Drupal 7</th>
+          <th>Drupal 8</th>
+        </tr>
+        <tr>
+          <th scope="row">Size, <em>tar.gz</em></th>
+          <td>3MB</td>
+          <td>~13MB</td>
+        </tr>
+        <tr>
+          <th scope="row">Modules / enabled</em></th>
+          <td>44 / 29</td>
+          <td>63 / 38</td>
+        </tr>
+      </table>
+	</div>
+    <style>
+      #out-of-the-box {
+        background: url(pictures/lego-bricks.jpg) 100% 100% no-repeat #FFF;
+      }
+      #out-of-the-box table {
+        background: white;
+        width: 60%;
+      }
+      #out-of-the-box ul {
+        margin-bottom: 10px;
+      }
+      #out-of-the-box li {
+        line-height: 85%;
+      }
+
+    </style>
+  </section>
+  <section class="slide cover" id="dive-in-code"><div>
+        <img src="pictures/joke_with_cat.png" alt="">
+	</div>
+  </section>
+   <section class="slide" id="extend"><div>
+       <h2>Before we dive in... <br>Where to put the code?</h2>
+       <ul>
+         <li><a href="https://drupal.org/best-practices/do-not-hack-core">Do not hack core!</a></li>
+         <li>Modules for logic (<em>M, C</em>)</li>
+         <li>Themes for representation (<em>V</em>)</li>
+       </ul>
+       <p class="note"><mark>*</mark> Patches for geeks :)</p>
+	</div>
+  </section>
+     <section class="slide" id="hooks1"><div>
+       <h2>Extend with hooks</h2>
+       <pre><code><mark class="comment">           /**
+            * Implements hook_custom_theme().
+            */</mark>
+           <mark>function</mark> MYMODULE_custom_theme() {
+             <mark>return</mark> $custom_themekey;
+           }
+</code>
+       </pre>
+       <p><i class="fa fa-graduation-cap"></i> <a href="http://en.wikipedia.org/wiki/Hooking"><b>Hook</b></a> is a common IT term. For example, it is used in <em>Windows API</em>, <em>Git</em>, <em>Wordpress</em> etc.</p>
+	</div>
+       <style>
+         #hooks1 p {
+           margin-top: -20px;
+           padding-top: 0;
+         }
+       </style>
+  </section>
+  <section class="slide" id="hooks2"><div>
+       <h2>Extend with hooks</h2>
+       <p>~<b>350</b> hooks in 7's core: <a href="https://api.drupal.org/api/drupal/includes!module.inc/group/hooks/7">Hooks on Drupal.org</a></p>
+       <p>You can create your own hooks and call them with <code>module_invoke_all()</code>, <code>module_invoke()</code> and <code>drupal_alter()</code>.</p>
+       <p>You also can alter other mosules' hook implementations with <code>hook_module_implements_alter()</code>.</p>
+	</div>
+  </section>
+  <section class="slide" id="hooks3"><div>
+       <h2>Most popular hooks</h2>
+       <p>Drupal 8 uses hooks, too.</p>
+       <table>
+         <tr>
+           <th>Drupal 7</th>
+           <th>Drupal 8</th>
+         </tr>
+         <tr>
+           <td><code>hook_menu()</code></td>
+           <td><code>hook_help()</code></td>
+         </tr>
+         <tr>
+           <td><code>hook_form_FORM_ID_alter()</code></td>
+           <td><code>hook_form_FORM_ID_alter()</code></td>
+         </tr>
+         <tr>
+           <td><code>hook_schema()</code></td>
+           <td><code><mark>hook_library_info()</mark></code></td>
+         </tr>
+         <tr>
+           <td><code>hook_theme()</code></td>
+           <td><code>hook_theme()</code></td>
+         </tr>
+          <tr>
+           <td><code>hook_permission()</code></td>
+           <td><code><mark>hook_preprocess_HOOK()</code></code></td>
+         </tr>
+          <tr>
+           <td><code>hook_(un)install()</code></td>
+           <td><code>hook_(un)install()</code></td>
+         </tr>
+          <tr>
+           <td><code>hook_block_view()</code></td>
+           <td><code><mark class="important">hook_views_data()</mark></code></td>
+         </tr>
+       </table>
+	</div>
+    <style>
+      #hooks3 h2 {
+        margin-bottom: 5px;
+      }
+      #hooks3 p {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </section>
+   <section class="slide" id="plugins"><div>
+       <h2>Add own implementations<br> for Drupal subsystems</h2>
+<table>
+  <tr>
+    <th>Subsystem</th>
+    <th>How-to</th>
+    <th>Examples</th>
+  </tr>
+  <tr>
+    <td>Field Storage</td>
+    <td><code>hook_field_storage_*()</code></td>
+    <td><small>MongoDB, ElasticSearch</small></td>
+  </tr>
+  <tr>
+    <td>Search</td>
+    <td><code>hook_search_*()</code></td>
+    <td><small>Apache Solr, Sphinx</td>
+  </tr>
+  <tr>
+    <td>Cache Backends</td>
+    <td><code>DrupalCacheInterface</code> implementation</td>
+    <td><small>Memcache Storage, APC</small></td>
+  </tr>
+  <tr>
+    <td>Mail Systems</td>
+    <td><code>DefaultMailSystem</code> extension</td>
+    <td><small>MimeMail, DevelMail</small></td>
+  </tr>
+  <tr>
+    <td>Stream Wrappers</td>
+    <td><code>DrupalStreamWrapperInterface</code> + <code>hook_stream_wrappers()</code></td>
+    <td><small>Remote stream wrapper, AmazonS3</small></td>
+  </tr>
+  <tr>
+    <td>Queue</td>
+    <td><code>DrupalQueueInterface</code> implementation</td>
+    <td><small>MongoDB, APC</small></td>
+  </tr>
+</table>
+       <style>
+         #plugins h2 {
+           margin-bottom: 10px;
+         }
+
+         #plugins th {
+           text-align: center;
+         }
+         #plugins td {
+           padding: 1px 5px;
+           font-size: 90%;
+         }
+       </style>
+	</div>
+  </section>
+  <section class="slide" id="override"><div>
+       <h2>Override subsystems in settings.php</h2>
+       <table>
+         <tr>
+           <th>Setting</th>
+           <th>Default value</th>
+         </tr>
+         <tr>
+           <td><code>password_inc</code></td>
+           <td>includes/password.inc</td>
+         </tr>
+         <tr>
+           <td><code>path_inc</code></td>
+           <td>includes/path.inc</td>
+         </tr>
+          <tr>
+           <td><code>session_inc</code></td>
+           <td>includes/session.inc</td>
+         </tr>
+          <tr>
+           <td><code>lock_inc</code></td>
+           <td>includes/lock.inc</td>
+         </tr>
+         <tr>
+           <td><code>menu_inc</code></td>
+           <td>includes/menu.inc</td>
+         </tr>
+         <tr>
+           <td><code>drupal_http_request_function</code></td>
+           <td>drupal_http_request()</td>
+         </tr>
+       </table>
+	</div>
+  </section>
+  <section class="slide" id="what"><div>
+       <h2>What to write?</h2>
+       <table>
+         <tr>
+           <td><code>drupal_strlen()</code></td>
+           <td><code>drupal_map_assoc()</code></td>
+
+           <td><code>user_access()</code></td>
+         </tr>
+         <tr>
+           <td><code>current_path()</code></td>
+           <td><code>user_load_by_mail()</code></td>
+           <td><code>debug()</code></td>
+         </tr>
+         <tr>
+           <td><code>drupal_random_key()</code></td>
+           <td><code>drupal_render()</code></td>
+           <td><code>variable_get()</code></td>
+
+         </tr>
+         <tr>
+           <td><code>cache_get_multiple()</code></td>
+
+           <td><code>flood_is_allowed()</code></td>
+           <td><code>text_summary()</code></td>
+         </tr>
+         <tr>
+           <td><code>drupal_explode_tags()</code></td>
+           <td><code>watchdog_exception()</code></td>
+           <td><code>token_replace()</code></td>
+
+         </tr>
+         <tr>
+           <td><code>module_load_include()</code></td>
+           <td><code>drupal_goto()</code></td>
+           <td>...</td>
+         </tr>
+       </table>
+       <style>
+         #what table {
+           margin-left: -40px;
+           line-height: 170%;
+         }
+       </style>
+    </div>
+  </section>
+  <section class="slide cover" id="story1">
+    <div>
+      <h2>Story #1</h2>
+      <p>function <code>t()</code></p>
+    </div>
+    <style>
+      #story1 h2 {
+        color: white;
+        font-size: 220%;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 10%;
+      }
+      #story1 p {
+        text-align: center;
+        color: white;
+      }
+    </style>
+  </section>
+  <section class="slide" id="story1-1">
+    <div>
+      <h2>Simple</h2>
+      <pre><code>t('<mark>Translate me</mark>');</code></pre>
+    </div>
+    <style>
+
+      #story1-1 pre {
+        text-align: center;
+        margin-top: 15%;
+        font-size: 200%;
+      }
+    </style>
+  </section>
+  <section class="slide" id="story1-2">
+    <div>
+      <h2>Secure</h2>
+      <pre><code>
+t('Translate me, <mark>%username!</mark>',
+           array('%username' <mark>=></mark> $account->name));</code></pre>
+
+      <table>
+      <tr>
+        <td><mark>@</mark>token</td>
+        <td><code>check_plain()</code></td>
+      </tr>
+      <tr>
+        <td><mark>%</mark>token</td>
+        <td><code>drupal_placeholder()</code> + <code>&lt;em&gt;</code></td>
+      </tr>
+      <tr>
+        <td><mark>!</mark>token</td>
+        <td>-</td>
+      </tr>
+    </table>
+    </div>
+
+    <style>
+
+      #story1-2 pre {
+        margin-top: -50px;
+      }
+    </style>
+  </section>
+
+  <section class="slide cover" id="story1-3-t-ui">
+    <div>
+      <h2>Integrated in UI</h2>
+    </div>
+    <style>
+      #story1-3-t-ui {
+        background: url(pictures/t-ui.png) no-repeat center 120px;
+      }
+      #story1-3-t-ui h2 {
+        color: white;
+        margin-top: -50px;
+      }
+    </style>
+  </section>
+
+  <section class="slide" id="story1-4">
+    <div>
+      <h2>Configurable</h2>
+
+    <ul>
+      <li>Contexts</li>
+      <li><code>$conf['<mark>locale_custom_strings_en</mark>']</code></li>
+    </ul>
+      <p class='note'>You can use <code>format_string()</code> if you need <code>t()</code> without translation.</p>
+      </div>
+    <style>
+
+    </style>
+  </section>
+
+    <section class="slide cover" id="story2">
+    <div>
+      <h2>Story #2</h2>
+      <p>class <code>EntityFieldQuery</code></p>
+    </div>
+    <style>
+      #story2 h2 {
+        font-size: 220%;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 10%;
+      }
+      #story2 p {
+        text-align: center;
+      }
+    </style>
+  </section>
+
+  <section class="slide" id="story2-1">
+    <div>
+      <h2>EFQ</h2>
+<pre><code>
+$query = new <mark>EntityFieldQuery</mark>();
+$query-><mark>entityCondition</mark>('entity_type', 'node')
+      -><mark>propertyCondition</mark>('status', 1)
+      -><mark>propertyCondition</mark>('type', array('article', 'blog'))
+      -><mark>fieldCondition</mark>('field_type', 'value', 'A')
+      -><mark>propertyOrderBy</mark>('created', 'DESC')
+      -><mark>range</mark>(0, 5);
+$result = $query->execute(); <mark class="comment">// Only entity ids.</mark>
+</code></pre>
+    </div>
+    <style>
+
+      #story2-1 pre {
+        margin-top: -50px;
+      }
+      #story2-1 mark {
+        color: #568ec6;
+      }
+    </style>
+  </section>
+ <section class="slide" id="story2-3">
+    <div>
+      <h2>EFQ</h2>
+
+    <ul>
+      <li>Field API support</li>
+      <li>Storage agnostic</li>
+      <li>Built-in params sanitizing</li>
+      <li>Access checks <em>(can be bypassed)</em></li>
+      <li>Tags <code>->addTag('debug')</code></li>
+      <li>Metadata <code>->addMetaData('node', $node)</code></li>
+      <li>Extenders (Pager, tableSort)</li>
+      <li><code>\Drupal::entityQuery()</code> in <strong>Drupal 8</strong></li>
+    </ul>
+
+      </div>
+    <style>
+
+    </style>
+  </section>
+   <section class="slide" id="story2-4">
+    <div>
+      <h2>OOP, please</h2>
+      <pre><code>
+class <mark class="important">CustomEntityFieldQuery</mark> extends <mark>EntityFieldQuery</mark> {
+
+}
+</code></pre>
+      </div>
+    <style>
+
+    </style>
+  </section>
+  <section class="slide cover" id="story3">
+    <div>
+      <h2>Story #3</h2>
+      <p>Key <code>#theme</code></p>
+    </div>
+    <style>
+      #story3 h2 {
+        color: white;
+        font-size: 220%;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 10%;
+      }
+      #story3 p {
+        text-align: center;
+        color: white;
+      }
+    </style>
+  </section>
+  <section class="slide" id="story3-1">
+    <div>
+      <h2>Render Arrays</h2>
+<pre><code>
+$build['our_theme_function'] = array(
+    <mark>'#theme'</mark> => 'theming_example_list',
+    <mark>'#attached'</mark> => array('css' => ...),
+    <mark>'#title'</mark> => $title,
+    <mark>'#items'</mark> => $items,
+  );
+
+return drupal_render($build);
+</code></pre>
+    </div>
+    <style>
+
+      #story3-1 pre {
+        margin-top: -50px;
+      }
+      #story3-1 mark {
+        color: #568ec6;
+      }
+    </style>
+  </section>
+  <section class="slide" id="story3-2">
+    <div>
+      <h2>Render Arrays</h2>
+      <ul>
+        <li>Do not hardcode HTML</li>
+        <li>Theme suggestions: <code>#theme => 'links__mymodule'</code></li>
+        <li><code>#attached</code>, <code>#attributes</code> etc</li>
+        <li><code>#cache</code> support</li>
+        <li>Built-in theme functions: table, tableselect, item_list, ...</li>
+        <li>Drupal 8: Render Arrays + Twig</li>
+      </ul>
+    </div>
+    <style>
+
+    </style>
+  </section>
+  <section class="slide cover" id="break">
+    <div>
+      <h2>Holy-break</h2>
+      <p>How I feel another CMF's</p>
+    </div>
+    <style>
+      #break h2 {
+        color: white;
+        font-size: 220%;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 10%;
+      }
+      #break p {
+        text-align: center;
+      }
+    </style>
+  </section>
+   <section class="slide" id="compare">
+    <div>
+      <table>
+        <tr>
+          <th>&nbsp;</th>
+          <th class="dr">Drupal 7</th>
+          <th class="bt">1C-Bitrix</th>
+          <th class="wp">Wordpress</th>
+        </tr>
+        <tr>
+          <td scope="header">First step</td>
+          <td>+</td>
+          <td>+</td>
+          <td class="wp">++</td>
+        </tr>
+        <tr>
+          <td scope="header">Admin panel</td>
+          <td>++</td>
+          <td class="bt">++++</td>
+          <td class="wp">++++</td>
+        </tr>
+        <tr>
+          <td scope="header">Code Quality</td>
+          <td class="dr">++++</td>
+          <td>++</td>
+          <td>+</td>
+        </tr>
+        <tr>
+          <td scope="header">News list</td>
+          <td>++</td>
+          <td class="bt">+++</td>
+          <td class="wp">+++</td>
+        </tr>
+        <tr>
+          <td scope="header">Flexibility</td>
+          <td class="dr">+++</td>
+          <td>++</td>
+          <td>+</td>
+        </tr>
+        <tr>
+          <td scope="header">Documentation</td>
+          <td class="dr">++++</td>
+          <td>+</td>
+          <td>++</td>
+        </tr>
+        <tr>
+          <td scope="header">Community</td>
+          <td class="dr">++++</td>
+          <td>+</td>
+          <td>+++</td>
+        </tr>
+        <tr>
+          <td scope="header">Russian Community</td>
+          <td>++</td>
+          <td>++</td>
+          <td>++</td>
+        </tr>
+        <tr>
+          <td scope="header">Performance</td>
+          <td class="pitfall">Fuu</td>
+          <td>++</td>
+          <td>++</td>
+        </tr>
+        <tr>
+          <td scope="header">Security</td>
+          <td class="dr">+++</td>
+          <td>++</td>
+          <td class="pitfall">Fuu</td>
+        </tr>
+      </table>
+      </div>
+    <style>
+      #compare table {
+        margin-top: -60px;
+
+      }
+      #compare td, #compare th {
+        border: 1px solid #ccc;
+        background: none;
+        text-align: center;
+      }
+
+
+      #compare .wp { background: #ffff99; }
+      #compare .dr { background: #3DA0DD; }
+      #compare .bt { background: #D91836; color: white; }
+      #compare .pitfall { color: #ff3300; text-transform: uppercase; }
+    </style>
+  </section>
+
+   <section class="slide cover" id="last-not-least">
+    <div>
+      <h2>Last but not least</h2>
+    </div>
+    <style>
+      #last-not-least h2 {
+        color: white;
+        font-size: 220%;
+        text-align: center;
+        font-weight: bold;
+        margin-top: 10%;
+      }
+      #last-not-least p {
+        text-align: center;
+        color: white;
+      }
+    </style>
+  </section>
+<section class="slide cover" id="community">
+    <div>
+      <h2>Community</h2>
+      <p>Out of the box</p>
+      <img src="pictures/drupalcon_munich.jpg">
+    </div>
+    <style>
+      #community h2 {
+        color: white;
+        font: 450%/130%  Arial Black, Arial, sans-serif;
+        text-align: center;
+        font-weight: bold;
+        padding-bottom: 20px;
+        margin: 15% 20px 0 20px;
+        background: #52A2DF;
+      }
+      #community p {
+        margin: 0 20px 0 20px;
+        float: right;
+        color: white;
+        background: #52A2DF;
+        padding: 0 50px;
+        border-bottom-left-radius: 5px;
+      }
+    </style>
+  </section>
+<section class="slide" id="thanks"><div><div class="content">
+      <h2>t(<mark>'Thanks, %username!'</mark>, :)</h2>
+        <ul>
+          <li>Kate Marshalkina, Web Developer at <a href="http://licel.ru/">Licel.ru</a>, Moscow</li>
+          <li><strong>@kalabro</strong> on <i class="fa fa-twitter"></i> and <i class="fa fa-drupal"></i></li>
+          <li>marshalkina@licel.ru</li>
+        </ul>
+      </div></div>
+      <style>
+
+        #thanks .fa {
+          color: #52A2DF;
+          font-size: 130%;
+          padding: 0 5px;
+        }
+      </style>
+    </section>
+	<!--
+		To hide progress bar from entire presentation
+		just remove “progress” element.
+		-->
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+</body>
+</html>
